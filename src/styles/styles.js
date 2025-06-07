@@ -12,13 +12,13 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-import base from './styles-base.css';
-import layout from './styles-layout.css';
-import print from './styles-print.css';
-import byline from './d-byline.css';
-import article from './d-article.css';
-import title from './d-title.css';
-import math from './d-math.css';
+import base from './styles-base.css?raw';
+import layout from './styles-layout.css?raw';
+import print from './styles-print.css?raw';
+import byline from './d-byline.css?raw';
+import article from './d-article.css?raw';
+import title from './d-title.css?raw';
+import math from './d-math.css?raw';
 
 export const styles = base + layout + title + byline + article + math + print;
 

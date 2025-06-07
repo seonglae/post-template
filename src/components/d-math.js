@@ -16,7 +16,7 @@
 import { Mutating } from '../mixins/mutating.js';
 import { Template } from '../mixins/template.js';
 
-import style from '../styles/d-math.css';
+import style from '../styles/d-math.css?raw';
 
 // attaches renderMathInElement to window
 import { renderMathInElement } from '../helpers/katex-auto-render';
