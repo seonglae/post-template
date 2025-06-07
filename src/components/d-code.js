@@ -22,7 +22,7 @@ import 'prismjs/components/prism-bash';
 import 'prismjs/components/prism-go';
 import 'prismjs/components/prism-markdown';
 import 'prismjs/components/prism-julia';
-import css from 'prismjs/themes/prism.css';
+import css from 'prismjs/themes/prism.css?raw';
 
 import { Template } from '../mixins/template.js';
 import { Mutating } from '../mixins/mutating.js';

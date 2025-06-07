@@ -1,4 +1,4 @@
-import logo from '../assets/distill-logo.svg';
+import logo from '../assets/distill-logo.svg?raw';
 
 export const footerTemplate = `
 <style>

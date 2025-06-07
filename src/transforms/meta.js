@@ -14,7 +14,7 @@
 
 // TODO: rewrite as template to make order dependencies easier
 
-import favicon from '../assets/distill-favicon.base64';
+import favicon from '../assets/distill-favicon.base64?raw';
 import escape from 'escape-html';
 
 export default function(dom, data) {
