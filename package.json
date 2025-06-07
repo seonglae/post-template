@@ -4,7 +4,7 @@
   "description": "Template for creating Distill articles.",
   "main": "dist/template.v2.js",
   "bin": {
-    "distill-render": "./bin/render.js"
+    "distill-render": "./bin/render.ts"
   },
   "author": "Shan Carter",
   "homepage": "https://github.com/distillpub/distill-template#readme",
@@ -37,6 +37,7 @@
     "prismjs": "^1.20.0",
     "should": "^13.2.3",
     "source-map-support": "^0.5.19",
+    "tsx": "^4.7.0",
     "typescript": "^5.2.2",
     "vite": "^5.0.0"
   },

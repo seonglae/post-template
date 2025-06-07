@@ -1,4 +1,4 @@
-#!/usr/bin/env node
+#!/usr/bin/env tsx
 
 // Copyright 2018 The Distill Template Authors
 //
@@ -14,12 +14,13 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-const path = require('path');
-const fs = require('fs');
-const program = require('commander');
-const jsdom = require('jsdom');
-const { JSDOM } = jsdom;
-const transforms = require('../dist/transforms.v2.js');
+import path from 'path';
+import fs from 'fs';
+import { Command } from 'commander';
+import { JSDOM, VirtualConsole } from 'jsdom';
+import * as transforms from '../dist/transforms.v2.js';
+
+const program = new Command();
 
 program
   .version('1.0.0')
@@ -29,22 +30,27 @@ program
   .option('-o, --output-path <path>', 'path to write rendered HTML file to.')
   .parse(process.argv);
 
-const virtualConsole = new jsdom.VirtualConsole();
+const virtualConsole = new VirtualConsole();
 // omitJSDOMErrors as JSDOM routinely can't parse modern CSS
 virtualConsole.sendTo(console, { omitJSDOMErrors: true });
 
-const options = { runScripts: 'outside-only', QuerySelector: true, virtualConsole: virtualConsole };
-JSDOM.fromFile(program.inputPath, options).then(dom => {
+const options = {
+  runScripts: 'outside-only',
+  QuerySelector: true,
+  virtualConsole
+};
+
+JSDOM.fromFile(program.opts().inputPath as string, options).then(dom => {
   const window = dom.window;
   const document = window.document;
   const HTMLElement = window.HTMLElement;
 
-  const data = new transforms.FrontMatter;
-  data.inputHTMLPath = program.inputPath; // may be needed to resolve relative links!
-  data.inputDirectory = path.dirname(program.inputPath);
+  const data = new (transforms as any).FrontMatter();
+  data.inputHTMLPath = program.opts().inputPath; // may be needed to resolve relative links!
+  data.inputDirectory = path.dirname(program.opts().inputPath as string);
   transforms.render(document, data);
   transforms.distillify(document, data);
 
   const transformedHtml = dom.serialize();
-  fs.writeFileSync(program.outputPath, transformedHtml);
+  fs.writeFileSync(program.opts().outputPath as string, transformedHtml);
 }).catch(console.error);
