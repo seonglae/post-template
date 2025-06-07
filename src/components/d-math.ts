@@ -13,8 +13,8 @@
 // limitations under the License.
 
 /*global katex */
-import { Mutating } from '../mixins/mutating.js';
-import { Template } from '../mixins/template.js';
+import { Mutating } from '../mixins/mutating';
+import { Template } from '../mixins/template';
 
 import style from '../styles/d-math.css?raw';
 

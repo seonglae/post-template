@@ -14,8 +14,8 @@
 
 import { FrontMatter, mergeFromYMLFrontmatter } from "./front-matter";
 import { DMath } from "./components/d-math";
-import { collect_citations } from "./helpers/citation.js";
-import { domContentLoaded } from "./helpers/domContentLoaded.js";
+import { collect_citations } from "./helpers/citation";
+import { domContentLoaded } from "./helpers/domContentLoaded";
 import { parseFrontmatter } from "./components/d-front-matter";
 import optionalComponents from "./transforms/optional-components";
 

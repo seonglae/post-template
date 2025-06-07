@@ -12,11 +12,13 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-import { bylineTemplate } from '../components/d-byline.js';
+import { collect_citations } from '../helpers/citation';
 
 export default function(dom, data) {
-  const byline = dom.querySelector('d-byline');
-  if (byline) {
-    byline.innerHTML = bylineTemplate(data);
+  const citations = new Set(data.citations);
+  const newCitations = collect_citations(dom);
+  for (const citation of newCitations) {
+    citations.add(citation);
   }
+  data.citations = Array.from(citations);
 }

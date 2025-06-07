@@ -24,8 +24,8 @@ import 'prismjs/components/prism-markdown';
 import 'prismjs/components/prism-julia';
 import css from 'prismjs/themes/prism.css?raw';
 
-import { Template } from '../mixins/template.js';
-import { Mutating } from '../mixins/mutating.js';
+import { Template } from '../mixins/template';
+import { Mutating } from '../mixins/mutating';
 
 const T = Template('d-code', `
 <style>
