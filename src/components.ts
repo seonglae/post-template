@@ -13,7 +13,7 @@
 // limitations under the License.
 
 import { Controller } from './controller';
-import { domContentLoaded } from './helpers/domContentLoaded.js';
+import { domContentLoaded } from './helpers/domContentLoaded';
 
 /* Transforms */
 import { makeStyleTag }    from './styles/styles';

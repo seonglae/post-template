@@ -12,13 +12,15 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-import { collect_citations } from '../helpers/citation.js';
+import { parseFrontmatter } from '../components/d-front-matter';
+import { mergeFromYMLFrontmatter } from '../front-matter';
 
 export default function(dom, data) {
-  const citations = new Set(data.citations);
-  const newCitations = collect_citations(dom);
-  for (const citation of newCitations) {
-    citations.add(citation);
+  const frontMatterTag = dom.querySelector('d-front-matter');
+  if (!frontMatterTag) {
+    console.warn('No front matter tag found!');
+    return;
   }
-  data.citations = Array.from(citations);
+  const extractedData = parseFrontmatter(frontMatterTag);
+  mergeFromYMLFrontmatter(data, extractedData);
 }

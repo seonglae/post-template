@@ -12,15 +12,11 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-import { parseFrontmatter } from '../components/d-front-matter';
-import { mergeFromYMLFrontmatter } from '../front-matter.js';
+import { bylineTemplate } from '../components/d-byline';
 
 export default function(dom, data) {
-  const frontMatterTag = dom.querySelector('d-front-matter');
-  if (!frontMatterTag) {
-    console.warn('No front matter tag found!');
-    return;
+  const byline = dom.querySelector('d-byline');
+  if (byline) {
+    byline.innerHTML = bylineTemplate(data);
   }
-  const extractedData = parseFrontmatter(frontMatterTag);
-  mergeFromYMLFrontmatter(data, extractedData);
 }

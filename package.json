@@ -14,7 +14,7 @@
   "scripts": {
     "dev": "vite",
     "serve": "http-server",
-    "test": "mocha",
+    "test": "vitest run",
     "lint": "eslint",
     "build": "vite build --config vite.components.config.ts && vite build --config vite.transforms.config.ts",
     "prepare": "npm run build"
@@ -39,7 +39,8 @@
     "source-map-support": "^0.5.19",
     "tsx": "^4.7.0",
     "typescript": "^5.2.2",
-    "vite": "^5.0.0"
+    "vite": "^5.0.0",
+    "vitest": "^1.0.0"
   },
   "dependencies": {
     "@webcomponents/webcomponentsjs": "^1.3.3",
