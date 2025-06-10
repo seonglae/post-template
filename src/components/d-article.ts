@@ -33,15 +33,15 @@ export class Article extends HTMLElement {
               {
                 // usually text nodes are only linebreaks.
                 const text = addedNode.nodeValue
-                if (!isOnlyWhitespace.test(text)) {
+                if (!isOnlyWhitespace.test(text as string)) {
                   console.warn(
                     'Use of unwrapped text in distill articles is discouraged as it breaks layout! Please wrap any text in a <span> or <p> tag. We found the following text: ' +
                       text,
                   )
-                  const wrapper = document.createElement('span')
-                  wrapper.innerHTML = addedNode.nodeValue
-                  addedNode.parentNode.insertBefore(wrapper, addedNode)
-                  addedNode.parentNode.removeChild(addedNode)
+                  const wrapper = document.createElement('span') as HTMLElement
+                  wrapper.innerHTML = addedNode.nodeValue as string
+                  addedNode.parentNode?.insertBefore(wrapper, addedNode)
+                  addedNode.parentNode?.removeChild(addedNode)
                 }
               }
               break

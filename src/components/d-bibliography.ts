@@ -14,14 +14,14 @@
 
 import { parseBibtex } from '../helpers/bibtex'
 
-export function parseBibliography(element) {
-  const scriptTag = element.firstElementChild
+export function parseBibliography(element: HTMLElement) {
+  const scriptTag = element.firstElementChild as HTMLScriptElement
   if (scriptTag && scriptTag.tagName === 'SCRIPT') {
     if (scriptTag.type == 'text/bibtex') {
-      const bibtex = element.firstElementChild.textContent
+      const bibtex = element.firstElementChild?.textContent
       return parseBibtex(bibtex)
     } else if (scriptTag.type == 'text/json') {
-      return new Map(JSON.parse(scriptTag.textContent))
+      return new Map(JSON.parse(scriptTag.textContent as string))
     } else {
       console.warn('Unsupported bibliography script tag type: ' + scriptTag.type)
     }
@@ -31,6 +31,7 @@ export function parseBibliography(element) {
 }
 
 export class Bibliography extends HTMLElement {
+  private bibtex: string | null = null
   static get is() {
     return 'd-bibliography'
   }
@@ -67,14 +68,14 @@ export class Bibliography extends HTMLElement {
         this.notify(bibliography)
       }
     } else if (scriptTag.type == 'text/json') {
-      const bibliography = new Map(JSON.parse(scriptTag.textContent))
-      this.notify(bibliography)
+      const bibliography = new Map(JSON.parse(scriptTag.textContent as string))
+      this.notify(bibliography as Map<string, unknown>)
     } else {
       console.warn('Unsupported bibliography script tag type: ' + scriptTag.type)
     }
   }
 
-  notify(bibliography) {
+  notify(bibliography: Map<string, unknown>) {
     const options = { detail: bibliography, bubbles: true }
     const event = new CustomEvent('onBibliographyChanged', options)
     this.dispatchEvent(event)
@@ -86,12 +87,12 @@ export class Bibliography extends HTMLElement {
     return ['src']
   }
 
-  receivedBibtex(event) {
-    const bibliography = parseBibtex(event.target.response)
+  receivedBibtex(event: ProgressEvent<EventTarget>) {
+    const bibliography = parseBibtex((event.target as XMLHttpRequest).response)
     this.notify(bibliography)
   }
 
-  attributeChangedCallback(name, oldValue, newValue) {
+  attributeChangedCallback(name: string, oldValue: string, newValue: string) {
     var oReq = new XMLHttpRequest()
     oReq.onload = e => this.receivedBibtex(e)
     oReq.onerror = () => console.warn(`Could not load Bibtex! (tried ${newValue})`)
