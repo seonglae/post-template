@@ -12,11 +12,11 @@
     "url": "https://github.com/seonglae/post-template/issues"
   },
   "scripts": {
-    "dev": "vite",
+    "dev": "vite build --watch",
     "serve": "serve public",
     "test": "vitest run",
     "lint": "eslint",
-    "build": "vite build --config vite.components.config.ts && vite build --config vite.transforms.config.ts",
+    "build": "vite build",
     "prepare": "npm run build",
     "format": "prettier --cache \"**/*.{js,json,md,css,js,ts,tsx}\" --write --ignore-path .gitignore"
   },
