@@ -12,28 +12,28 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-import { parseBibtex } from '../helpers/bibtex';
-import fs from 'fs';
-import { parseBibliography } from '../components/d-bibliography';
+import { parseBibtex } from '../helpers/bibtex'
+import fs from 'fs'
+import { parseBibliography } from '../components/d-bibliography'
 
-export default function(dom, data) {
-  const bibliographyTag = dom.querySelector('d-bibliography');
+export default function (dom, data) {
+  const bibliographyTag = dom.querySelector('d-bibliography')
   if (!bibliographyTag) {
-    console.warn('No bibliography tag found!');
-    return;
+    console.warn('No bibliography tag found!')
+    return
   }
 
-  const src = bibliographyTag.getAttribute('src');
+  const src = bibliographyTag.getAttribute('src')
   if (src) {
-    const path = data.inputDirectory + '/' + src;
-    const text = fs.readFileSync(path, 'utf-8');
-    const bibliography = parseBibtex(text);
-    const scriptTag = dom.createElement('script');
-    scriptTag.type = 'text/json';
-    scriptTag.textContent = JSON.stringify([...bibliography]);
-    bibliographyTag.appendChild(scriptTag);
-    bibliographyTag.removeAttribute('src');
+    const path = data.inputDirectory + '/' + src
+    const text = fs.readFileSync(path, 'utf-8')
+    const bibliography = parseBibtex(text)
+    const scriptTag = dom.createElement('script')
+    scriptTag.type = 'text/json'
+    scriptTag.textContent = JSON.stringify([...bibliography])
+    bibliographyTag.appendChild(scriptTag)
+    bibliographyTag.removeAttribute('src')
   }
 
-  data.bibliography = parseBibliography(bibliographyTag);
+  data.bibliography = parseBibliography(bibliographyTag)
 }

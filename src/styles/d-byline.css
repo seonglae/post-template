@@ -24,13 +24,12 @@ d-byline {
   min-height: 1.8em;
 }
 
-
 d-byline .byline {
   grid-template-columns: 1fr 1fr;
   grid-column: text;
 }
 
-@media(min-width: 768px) {
+@media (min-width: 768px) {
   d-byline .byline {
     grid-template-columns: 1fr 1fr 1fr 1fr;
   }
@@ -42,7 +41,7 @@ d-byline .authors-affiliations {
   margin-bottom: 1em;
 }
 
-@media(min-width: 768px) {
+@media (min-width: 768px) {
   d-byline .authors-affiliations {
     margin-bottom: 0;
   }
@@ -77,5 +76,4 @@ d-byline p.author {
 }
 
 d-byline .affiliations {
-
 }

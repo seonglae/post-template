@@ -12,10 +12,10 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-import code from './hover-box.txt';
+import code from './hover-box.txt'
 
-export default function(dom) {
-  let s = dom.createElement('script');
-  s.textContent = code;
-  dom.querySelector('body').appendChild(s);
+export default function (dom) {
+  let s = dom.createElement('script')
+  s.textContent = code
+  dom.querySelector('body').appendChild(s)
 }

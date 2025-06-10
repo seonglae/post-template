@@ -12,42 +12,42 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-import katex from 'katex';
-import { renderMathInElement } from '../helpers/katex-auto-render';
+import katex from 'katex'
+import { renderMathInElement } from '../helpers/katex-auto-render'
 
-export default function(dom, data) {
-  let needsCSS = false;
-  const body = dom.querySelector('body');
+export default function (dom, data) {
+  let needsCSS = false
+  const body = dom.querySelector('body')
 
   if (!body) {
-    console.warn("No body tag found!");
-    return;
+    console.warn('No body tag found!')
+    return
   }
 
   if (data.katex && data.katex.delimiters) {
-    global.document = dom;
-    renderMathInElement(body, data.katex);
+    global.document = dom
+    renderMathInElement(body, data.katex)
   }
 
   // render d-math tags
-  const mathTags = body.querySelectorAll('d-math');
+  const mathTags = body.querySelectorAll('d-math')
   if (mathTags.length > 0) {
-    needsCSS = true;
-    console.warn(`Prerendering ${mathTags.length} math tags...`);
+    needsCSS = true
+    console.warn(`Prerendering ${mathTags.length} math tags...`)
     for (const mathTag of mathTags) {
-      const localOptions = { displayMode: mathTag.hasAttribute('block') };
-      const options = Object.assign(localOptions, data.katex);
-      const html = katex.renderToString(mathTag.textContent, options);
-      const container = dom.createElement('span');
-      container.innerHTML = html;
-      mathTag.parentElement.insertBefore(container, mathTag);
-      mathTag.parentElement.removeChild(mathTag);
+      const localOptions = { displayMode: mathTag.hasAttribute('block') }
+      const options = Object.assign(localOptions, data.katex)
+      const html = katex.renderToString(mathTag.textContent, options)
+      const container = dom.createElement('span')
+      container.innerHTML = html
+      mathTag.parentElement.insertBefore(container, mathTag)
+      mathTag.parentElement.removeChild(mathTag)
     }
   }
 
   if (needsCSS) {
-    const katexCSSTag = '<link rel="stylesheet" href="https://distill.pub/third-party/katex/katex.min.css" crossorigin="anonymous">';
-    dom.head.insertAdjacentHTML('beforeend', katexCSSTag);
+    const katexCSSTag =
+      '<link rel="stylesheet" href="https://distill.pub/third-party/katex/katex.min.css" crossorigin="anonymous">'
+    dom.head.insertAdjacentHTML('beforeend', katexCSSTag)
   }
-
 }

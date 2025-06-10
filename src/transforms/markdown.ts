@@ -12,23 +12,23 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-import marked from 'marked';
+import marked from 'marked'
 
 marked.setOptions({
   gfm: true,
-  smartypants: true
-});
+  smartypants: true,
+})
 
-export default function(dom, data) {
-  let markdownElements = [].slice.call(dom.querySelectorAll('[markdown]'));
+export default function (dom, data) {
+  let markdownElements = [].slice.call(dom.querySelectorAll('[markdown]'))
   markdownElements.forEach(el => {
-    let content = el.innerHTML;
+    let content = el.innerHTML
     // Set default indents
-    content = content.replace(/\n/, '');
-    let tabs = content.match(/\s*/);
-    content = content.replace(new RegExp('\n' + tabs, 'g'), '\n');
-    content = content.trim();
+    content = content.replace(/\n/, '')
+    let tabs = content.match(/\s*/)
+    content = content.replace(new RegExp('\n' + tabs, 'g'), '\n')
+    content = content.trim()
 
-    el.innerHTML = marked(content);
-  });
+    el.innerHTML = marked(content)
+  })
 }

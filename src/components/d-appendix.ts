@@ -12,9 +12,11 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-import { Template } from '../mixins/template';
+import { Template } from '../mixins/template'
 
-const T = Template('d-appendix', `
+const T = Template(
+  'd-appendix',
+  `
 <style>
 
 d-appendix {
@@ -73,8 +75,8 @@ d-appendix > distill-appendix {
 
 </style>
 
-`, false);
+`,
+  false,
+)
 
-export class Appendix extends T(HTMLElement) {
-
-}
+export class Appendix extends T(HTMLElement) {}

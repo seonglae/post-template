@@ -12,11 +12,11 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-import { bylineTemplate } from '../components/d-byline';
+import { bylineTemplate } from '../components/d-byline'
 
-export default function(dom, data) {
-  const byline = dom.querySelector('d-byline');
+export default function (dom, data) {
+  const byline = dom.querySelector('d-byline')
   if (byline) {
-    byline.innerHTML = bylineTemplate(data);
+    byline.innerHTML = bylineTemplate(data)
   }
 }

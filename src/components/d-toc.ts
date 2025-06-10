@@ -13,24 +13,23 @@
 // limitations under the License.
 
 export class TOC extends HTMLElement {
-
-  static get is() { return 'd-toc'; }
+  static get is() {
+    return 'd-toc'
+  }
 
   connectedCallback() {
     if (!this.getAttribute('prerendered')) {
       window.onload = () => {
-        const article = document.querySelector('d-article');
-        const headings = article.querySelectorAll('h2, h3');
-        renderTOC(this, headings);
-      };
+        const article = document.querySelector('d-article')
+        const headings = article.querySelectorAll('h2, h3')
+        renderTOC(this, headings)
+      }
     }
   }
-
 }
 
 export function renderTOC(element, headings) {
-
-  let ToC =`
+  let ToC = `
   <style>
 
   d-toc {
@@ -54,27 +53,26 @@ export function renderTOC(element, headings) {
   </style>
   <nav role="navigation" class="table-of-contents"></nav>
   <h2>Table of contents</h2>
-  <ul>`;
+  <ul>`
 
   for (const el of headings) {
     // should element be included in TOC?
-    const isInTitle = el.parentElement.tagName == 'D-TITLE';
-    const isException = el.getAttribute('no-toc');
-    if (isInTitle || isException) continue;
+    const isInTitle = el.parentElement.tagName == 'D-TITLE'
+    const isException = el.getAttribute('no-toc')
+    if (isInTitle || isException) continue
     // create TOC entry
-    const title = el.textContent;
-    const link = '#' + el.getAttribute('id');
+    const title = el.textContent
+    const link = '#' + el.getAttribute('id')
 
-    let newLine = '<li>' + '<a href="' + link + '">' + title + '</a>' + '</li>';
+    let newLine = '<li>' + '<a href="' + link + '">' + title + '</a>' + '</li>'
     if (el.tagName == 'H3') {
-      newLine = '<ul>' + newLine + '</ul>';
+      newLine = '<ul>' + newLine + '</ul>'
     } else {
-      newLine += '<br>';
+      newLine += '<br>'
     }
-    ToC += newLine;
-
+    ToC += newLine
   }
 
-  ToC += '</ul></nav>';
-  element.innerHTML = ToC;
+  ToC += '</ul></nav>'
+  element.innerHTML = ToC
 }

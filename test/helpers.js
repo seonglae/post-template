@@ -13,5 +13,5 @@
 // limitations under the License.
 
 function nodeListToArray(nodeList) {
-  return Array.prototype.slice.call(nodeList);
+  return Array.prototype.slice.call(nodeList)
 }

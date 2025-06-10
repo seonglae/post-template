@@ -13,5 +13,7 @@
 // limitations under the License.
 
 export class Title extends HTMLElement {
-  static get is() { return 'd-title'; }
+  static get is() {
+    return 'd-title'
+  }
 }

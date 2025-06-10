@@ -12,14 +12,14 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-import { renderTOC } from '../components/d-toc';
+import { renderTOC } from '../components/d-toc'
 
-export default function(dom) {
-  const article = dom.querySelector('d-article');
-  const toc = dom.querySelector('d-toc');
+export default function (dom) {
+  const article = dom.querySelector('d-article')
+  const toc = dom.querySelector('d-toc')
   if (toc) {
-    const headings = article.querySelectorAll('h2, h3');
-    renderTOC(toc, headings);
-    toc.setAttribute('prerendered', 'true');
+    const headings = article.querySelectorAll('h2, h3')
+    renderTOC(toc, headings)
+    toc.setAttribute('prerendered', 'true')
   }
 }

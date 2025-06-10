@@ -12,11 +12,11 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-import { Template } from "../mixins/template";
-import { hover_cite, bibliography_cite } from "../helpers/citation";
+import { Template } from '../mixins/template'
+import { hover_cite, bibliography_cite } from '../helpers/citation'
 
 const T = Template(
-  "d-cite",
+  'd-cite',
   `
 <style>
 
@@ -71,30 +71,30 @@ ul li:last-of-type {
 <div id="citation-" class="citation">
   <span class="citation-number"></span>
 </div>
-`
-);
+`,
+)
 
 export class Cite extends T(HTMLElement) {
   /* Lifecycle */
   constructor() {
-    super();
-    this._numbers = [];
-    this._entries = [];
+    super()
+    this._numbers = []
+    this._entries = []
   }
 
   connectedCallback() {
-    this.outerSpan = this.root.querySelector("#citation-");
-    this.innerSpan = this.root.querySelector(".citation-number");
-    this.hoverBox = this.root.querySelector("d-hover-box");
-    window.customElements.whenDefined("d-hover-box").then(() => {
-      this.hoverBox.listen(this);
-    });
+    this.outerSpan = this.root.querySelector('#citation-')
+    this.innerSpan = this.root.querySelector('.citation-number')
+    this.hoverBox = this.root.querySelector('d-hover-box')
+    window.customElements.whenDefined('d-hover-box').then(() => {
+      this.hoverBox.listen(this)
+    })
     // in case this component got connected after values were set
     if (this.numbers) {
-      this.displayNumbers(this.numbers);
+      this.displayNumbers(this.numbers)
     }
     if (this.entries) {
-      this.displayEntries(this.entries);
+      this.displayEntries(this.entries)
     }
   }
 
@@ -109,67 +109,67 @@ export class Cite extends T(HTMLElement) {
   /* observe 'key' attribute */
 
   static get observedAttributes() {
-    return ["key", "bibtex-key"];
+    return ['key', 'bibtex-key']
   }
 
   attributeChangedCallback(name, oldValue, newValue) {
-    const eventName = oldValue ? "onCiteKeyChanged" : "onCiteKeyCreated";
-    const keys = newValue.split(",").map(k => k.trim());
-    const options = { detail: [this, keys], bubbles: true };
-    const event = new CustomEvent(eventName, options);
-    document.dispatchEvent(event);
+    const eventName = oldValue ? 'onCiteKeyChanged' : 'onCiteKeyCreated'
+    const keys = newValue.split(',').map(k => k.trim())
+    const options = { detail: [this, keys], bubbles: true }
+    const event = new CustomEvent(eventName, options)
+    document.dispatchEvent(event)
   }
 
   set key(value) {
-    this.setAttribute("key", value);
+    this.setAttribute('key', value)
   }
 
   get key() {
-    return this.getAttribute("key") || this.getAttribute("bibtex-key");
+    return this.getAttribute('key') || this.getAttribute('bibtex-key')
   }
 
   get keys() {
-    const result = this.key.split(",");
-    console.log(result);
-    return result;
+    const result = this.key.split(',')
+    console.log(result)
+    return result
   }
 
   /* Setters & Rendering */
 
   set numbers(numbers) {
-    this._numbers = numbers;
-    this.displayNumbers(numbers);
+    this._numbers = numbers
+    this.displayNumbers(numbers)
   }
 
   get numbers() {
-    return this._numbers;
+    return this._numbers
   }
 
   displayNumbers(numbers) {
-    if (!this.innerSpan) return;
+    if (!this.innerSpan) return
     const numberStrings = numbers.map(index => {
-      return index == -1 ? "?" : index + 1 + "";
-    });
-    const textContent = "[" + numberStrings.join(", ") + "]";
-    this.innerSpan.textContent = textContent;
+      return index == -1 ? '?' : index + 1 + ''
+    })
+    const textContent = '[' + numberStrings.join(', ') + ']'
+    this.innerSpan.textContent = textContent
   }
 
   set entries(entries) {
-    this._entries = entries;
-    this.displayEntries(entries);
+    this._entries = entries
+    this.displayEntries(entries)
   }
 
   get entries() {
-    return this._entries;
+    return this._entries
   }
 
   displayEntries(entries) {
-    if (!this.hoverBox) return;
+    if (!this.hoverBox) return
     this.hoverBox.innerHTML = `<ul>
       ${entries
         .map(hover_cite)
         .map(html => `<li>${html}</li>`)
-        .join("\n")}
-    </ul>`;
+        .join('\n')}
+    </ul>`
   }
 }

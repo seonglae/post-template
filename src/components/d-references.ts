@@ -12,16 +12,18 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-import { Template } from '../mixins/template';
+import { Template } from '../mixins/template'
 
-const T = Template('d-references', `
+const T = Template(
+  'd-references',
+  `
 <style>
 d-references {
   display: block;
 }
 </style>
-`, false);
+`,
+  false,
+)
 
-export  class References extends T(HTMLElement) {
-
-}
+export class References extends T(HTMLElement) {}

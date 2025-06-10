@@ -12,10 +12,12 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-import { Template } from '../mixins/template';
-import { body } from '../helpers/layout';
+import { Template } from '../mixins/template'
+import { body } from '../helpers/layout'
 
-const T = Template('d-abstract', `
+const T = Template(
+  'd-abstract',
+  `
 <style>
   :host {
     font-size: 1.25rem;
@@ -33,8 +35,7 @@ const T = Template('d-abstract', `
 </style>
 
 <slot></slot>
-`);
+`,
+)
 
-export class Abstract extends T(HTMLElement) {
-
-}
+export class Abstract extends T(HTMLElement) {}

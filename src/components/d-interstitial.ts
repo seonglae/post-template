@@ -12,13 +12,15 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-import { Template } from '../mixins/template';
+import { Template } from '../mixins/template'
 
 // This overlay is not secure.
 // It is only meant as a social deterrent.
 
-const productionHostname = 'distill.pub';
-const T = Template('d-interstitial', `
+const productionHostname = 'distill.pub'
+const T = Template(
+  'd-interstitial',
+  `
 <style>
 
 .overlay {
@@ -119,27 +121,27 @@ p small {
     <p><small>Enter the password we shared with you as part of the review process to view the article.</small></p>
   </div>
 </div>
-`);
+`,
+)
 
 export class Interstitial extends T(HTMLElement) {
-
   connectedCallback() {
     if (this.shouldRemoveSelf()) {
-      this.parentElement.removeChild(this);
+      this.parentElement.removeChild(this)
     } else {
-      const passwordInput = this.root.querySelector('#interstitial-password-input');
-      passwordInput.oninput = (event) => this.passwordChanged(event);
+      const passwordInput = this.root.querySelector('#interstitial-password-input')
+      passwordInput.oninput = event => this.passwordChanged(event)
     }
   }
 
   passwordChanged(event) {
-    const entered = event.target.value;
+    const entered = event.target.value
     if (entered === this.password) {
-      console.log('Correct password entered.');
-      this.parentElement.removeChild(this);
-      if (typeof(Storage) !== 'undefined') {
-        console.log('Saved that correct password was entered.');
-        localStorage.setItem(this.localStorageIdentifier(), 'true');
+      console.log('Correct password entered.')
+      this.parentElement.removeChild(this)
+      if (typeof Storage !== 'undefined') {
+        console.log('Saved that correct password was entered.')
+        localStorage.setItem(this.localStorageIdentifier(), 'true')
       }
     }
   }
@@ -147,24 +149,23 @@ export class Interstitial extends T(HTMLElement) {
   shouldRemoveSelf() {
     // should never be visible in production
     if (window && window.location.hostname === productionHostname) {
-      console.warn('Interstitial found on production, hiding it.');
+      console.warn('Interstitial found on production, hiding it.')
       return true
     }
     // should only have to enter password once
-    if (typeof(Storage) !== 'undefined') {
+    if (typeof Storage !== 'undefined') {
       if (localStorage.getItem(this.localStorageIdentifier()) === 'true') {
-        console.log('Loaded that correct password was entered before; skipping interstitial.');
-        return true;
+        console.log('Loaded that correct password was entered before; skipping interstitial.')
+        return true
       }
     }
     // otherwise, leave visible
-    return false;
+    return false
   }
 
   localStorageIdentifier() {
     const prefix = 'distill-drafts'
-    const suffix = 'interstitial-password-correct';
+    const suffix = 'interstitial-password-correct'
     return prefix + (window ? window.location.pathname : '-') + suffix
   }
-
 }

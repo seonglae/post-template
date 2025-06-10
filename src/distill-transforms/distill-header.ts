@@ -12,16 +12,15 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+import { headerTemplate } from '../distill-components/distill-header-template'
 
-import { headerTemplate } from '../distill-components/distill-header-template';
-
-export default function(dom, data) {
-  const headerTag = dom.querySelector('distill-header');
+export default function (dom, data) {
+  const headerTag = dom.querySelector('distill-header')
   if (!headerTag) {
-    const header = dom.createElement('distill-header');
-    header.innerHTML = headerTemplate;
-    header.setAttribute('distill-prerendered', "");
-    const body = dom.querySelector('body');
-    body.insertBefore(header, body.firstChild);
+    const header = dom.createElement('distill-header')
+    header.innerHTML = headerTemplate
+    header.setAttribute('distill-prerendered', '')
+    const body = dom.querySelector('body')
+    body.insertBefore(header, body.firstChild)
   }
 }

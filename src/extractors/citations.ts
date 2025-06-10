@@ -12,13 +12,13 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-import { collect_citations } from '../helpers/citation';
+import { collect_citations } from '../helpers/citation'
 
-export default function(dom, data) {
-  const citations = new Set(data.citations);
-  const newCitations = collect_citations(dom);
+export default function (dom, data) {
+  const citations = new Set(data.citations)
+  const newCitations = collect_citations(dom)
   for (const citation of newCitations) {
-    citations.add(citation);
+    citations.add(citation)
   }
-  data.citations = Array.from(citations);
+  data.citations = Array.from(citations)
 }
