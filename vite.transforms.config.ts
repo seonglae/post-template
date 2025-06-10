@@ -1,6 +1,7 @@
-import libConfig from './vite.base.config';
+import libConfig from "./vite.base.config"
 
 export default libConfig({
-  entry: 'src/transforms.ts',
-  fileName: 'transforms.v2.js'
-});
+  entry: "src/transforms/index.ts",
+  fileName: "transforms.v2.js",
+  outDir: "public"
+})
