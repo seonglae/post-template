@@ -1,4 +1,4 @@
-import { defineConfig } from 'vite'
+import { defineConfig } from 'vitest/config'
 
 export default defineConfig({
   build: {
@@ -11,5 +11,10 @@ export default defineConfig({
     },
     outDir: 'public',
     emptyOutDir: false,
+  },
+  test: {
+    globals: true,
+    environment: 'jsdom',
+    include: ['test/**/*.test.ts'],
   },
 }) 
