@@ -1,9 +1,10 @@
-import { defineConfig } from 'vite';
-import { resolve } from 'path';
+import { defineConfig } from 'vite'
+import { resolve } from 'path'
 
 interface LibOptions {
   entry: string;
   fileName: string;
+  outDir?: string;
 }
 
 export default function libConfig(options: LibOptions) {
@@ -11,12 +12,12 @@ export default function libConfig(options: LibOptions) {
     build: {
       lib: {
         entry: resolve(__dirname, options.entry),
-        name: 'dl',
-        formats: ['umd'],
-        fileName: () => options.fileName
+        name: "dl",
+        formats: ["umd"],
+        fileName: () => options.fileName,
       },
-      outDir: 'dist',
-      emptyOutDir: false
+      outDir: options.outDir || "dist",
+      emptyOutDir: false,
     }
-  });
+  })
 }
