@@ -18,7 +18,7 @@ import path from 'path'
 import fs from 'fs'
 import { Command } from 'commander'
 import { JSDOM, VirtualConsole } from 'jsdom'
-import * as transforms from '../dist/transforms.v2.js'
+import * as transforms from '../public/transforms.v2.js'
 
 const program = new Command()
 

@@ -1,6 +1,6 @@
 {
-  "name": "distill-template",
-  "version": "2.8.0",
+  "name": "post-template",
+  "version": "1.0.0",
   "description": "Template for creating Distill articles.",
   "main": "public/template.v2.js",
   "bin": {
