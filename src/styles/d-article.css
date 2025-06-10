@@ -26,22 +26,20 @@ d-article > * {
   grid-column: text;
 }
 
-@media(min-width: 768px) {
+@media (min-width: 768px) {
   d-article {
     font-size: 16px;
   }
 }
 
-@media(min-width: 1024px) {
+@media (min-width: 1024px) {
   d-article {
     font-size: 1.06rem;
     line-height: 1.7em;
   }
 }
 
-
 /* H2 */
-
 
 d-article .marker {
   text-decoration: none;
@@ -76,7 +74,7 @@ d-article h2 {
   padding-bottom: 1rem;
 }
 
-@media(min-width: 1024px) {
+@media (min-width: 1024px) {
   d-article h2 {
     font-size: 36px;
   }
@@ -92,7 +90,7 @@ d-article h3 {
   margin-top: 2em;
 }
 
-@media(min-width: 1024px) {
+@media (min-width: 1024px) {
   d-article h3 {
     font-size: 20px;
   }
@@ -183,12 +181,12 @@ d-article span.equation-mimic {
 }
 
 d-article > d-code,
-d-article section > d-code  {
+d-article section > d-code {
   display: block;
 }
 
 d-article > d-math[block],
-d-article section > d-math[block]  {
+d-article section > d-math[block] {
   display: block;
 }
 
@@ -197,16 +195,16 @@ d-article section > d-math[block]  {
   d-article section > d-code,
   d-article > d-math[block],
   d-article section > d-math[block] {
-      overflow-x: scroll;
-      -ms-overflow-style: none;  /* IE 10+ */
-      overflow: -moz-scrollbars-none;  /* Firefox */
+    overflow-x: scroll;
+    -ms-overflow-style: none; /* IE 10+ */
+    overflow: -moz-scrollbars-none; /* Firefox */
   }
 
   d-article > d-code::-webkit-scrollbar,
   d-article section > d-code::-webkit-scrollbar,
   d-article > d-math[block]::-webkit-scrollbar,
   d-article section > d-math[block]::-webkit-scrollbar {
-    display: none;  /* Safari and Chrome */
+    display: none; /* Safari and Chrome */
   }
 }
 
@@ -226,7 +224,8 @@ d-figure {
 
 /* KaTeX */
 
-.katex, .katex-prerendered {
+.katex,
+.katex-prerendered {
   contain: style;
   display: inline-block;
 }
