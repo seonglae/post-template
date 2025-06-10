@@ -7,7 +7,7 @@ export default defineConfig({
         'template.v2': 'src/components.ts',
         'transforms.v2': 'src/transforms/index.ts',
       },
-      formats: ['es'],
+      formats: ['cjs', 'es'],
     },
     outDir: 'public',
     emptyOutDir: false,
