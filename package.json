@@ -1,31 +1,33 @@
 {
-  "name": "distill-template",
-  "version": "2.8.0",
+  "name": "post-template",
+  "version": "1.0.0",
   "description": "Template for creating Distill articles.",
-  "main": "dist/template.v2.js",
+  "main": "public/template.v2.js",
   "bin": {
-    "distill-render": "./bin/render.js"
+    "distill-render": "./bin/render.ts"
   },
-  "author": "Shan Carter",
-  "homepage": "https://github.com/distillpub/distill-template#readme",
+  "author": "Seonglae Cho",
+  "homepage": "https://github.com/seonglae/post-template#readme",
   "bugs": {
-    "url": "https://github.com/distillpub/distill-template/issues"
+    "url": "https://github.com/seonglae/post-template/issues"
   },
   "scripts": {
-    "dev": "rollup -c rollup.config.dev.js -w",
-    "serve": "http-server",
-    "test": "mocha",
+    "dev": "vite build --watch",
+    "serve": "serve public",
+    "test": "vitest run",
     "lint": "eslint",
-    "build": "rollup -c rollup.config.prod.js",
-    "prepare": "npm run build"
+    "build": "vite build",
+    "prepare": "npm run build",
+    "format": "prettier --cache \"**/*.{js,json,md,css,js,ts,tsx}\" --write --ignore-path .gitignore"
   },
   "repository": {
-    "url": "git+https://github.com/distillpub/distill-template.git",
+    "url": "git+https://github.com/seonglae/post-template.git",
     "type": "git"
   },
   "devDependencies": {
     "@babel/core": "^7.9.0",
-    "@rollup/plugin-babel": "^5.0.0",
+    "@types/chai": "^5.2.2",
+    "@types/jsdom": "^21.1.7",
     "bibtex-parse-js": "^0.0.23",
     "chai": "^3.5.0",
     "eslint": "^4.19.1",
@@ -35,19 +37,14 @@
     "jsdom-global": "3.0.2",
     "marked": "^0.8.2",
     "mocha": "^5.2.0",
+    "prettier": "^3.5.3",
     "prismjs": "^1.20.0",
-    "rollup": "^2.7.3",
-    "rollup-plugin-commonjs": "^10.1.0",
-    "rollup-plugin-copy": "^0.2.3",
-    "rollup-plugin-grapher": "^0.2.0",
-    "rollup-plugin-gzip": "^1.4.0",
-    "rollup-plugin-node-resolve": "^2.0.0",
-    "rollup-plugin-serve": "^1.0.1",
-    "rollup-plugin-string": "^2.0.2",
-    "rollup-plugin-uglify": "^1.0.1",
-    "rollup-watch": "^4.3.1",
     "should": "^13.2.3",
-    "source-map-support": "^0.5.19"
+    "source-map-support": "^0.5.19",
+    "tsx": "^4.7.0",
+    "typescript": "^5.2.2",
+    "vite": "^5.0.0",
+    "vitest": "^1.0.0"
   },
   "dependencies": {
     "@webcomponents/webcomponentsjs": "^1.3.3",
@@ -61,6 +58,7 @@
     "escape-html": "^1.0.3",
     "intersection-observer": "^0.4.3",
     "jsdom-wc": "^11.0.0-alpha-1",
-    "katex": "^0.8.3"
+    "katex": "^0.8.3",
+    "serve": "^14.2.4"
   }
 }
