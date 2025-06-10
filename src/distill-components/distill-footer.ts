@@ -12,12 +12,10 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-import { Template } from '../mixins/template';
+import { Template } from '../mixins/template'
 
-import {footerTemplate} from './distill-footer-template';
+import { footerTemplate } from './distill-footer-template'
 
-const T = Template('distill-footer', footerTemplate);
+const T = Template('distill-footer', footerTemplate)
 
-export class DistillFooter extends T(HTMLElement) {
-
-}
+export class DistillFooter extends T(HTMLElement) {}

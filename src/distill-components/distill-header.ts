@@ -12,12 +12,10 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-import { Template } from '../mixins/template';
+import { Template } from '../mixins/template'
 
-import {headerTemplate} from './distill-header-template';
+import { headerTemplate } from './distill-header-template'
 
-const T = Template('distill-header', headerTemplate, false);
+const T = Template('distill-header', headerTemplate, false)
 
-export class DistillHeader extends T(HTMLElement) {
-
-}
+export class DistillHeader extends T(HTMLElement) {}

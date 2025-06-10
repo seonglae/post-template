@@ -12,9 +12,11 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-import { Template } from '../mixins/template';
+import { Template } from '../mixins/template'
 
-const T = Template('d-footnote', `
+const T = Template(
+  'd-footnote',
+  `
 <style>
 
 d-math[block] {
@@ -54,22 +56,22 @@ span {
   <span id="fn-" data-hover-ref=""></span>
 </sup>
 
-`);
+`,
+)
 
 export class Footnote extends T(HTMLElement) {
-
   constructor() {
-    super();
+    super()
 
-    const options = {childList: true, characterData: true, subtree: true};
-    const observer = new MutationObserver(this.notify);
-    observer.observe(this, options);
+    const options = { childList: true, characterData: true, subtree: true }
+    const observer = new MutationObserver(this.notify)
+    observer.observe(this, options)
   }
 
   notify() {
-    const options = { detail: this, bubbles: true };
-    const event = new CustomEvent('onFootnoteChanged', options);
-    document.dispatchEvent(event);
+    const options = { detail: this, bubbles: true }
+    const event = new CustomEvent('onFootnoteChanged', options)
+    document.dispatchEvent(event)
   }
 
   connectedCallback() {
@@ -77,26 +79,25 @@ export class Footnote extends T(HTMLElement) {
     // const slot = this.shadowRoot.querySelector('#slot');
     // console.warn(slot.textContent);
     // slot.addEventListener('slotchange', this.notify);
-    this.hoverBox = this.root.querySelector('d-hover-box');
+    this.hoverBox = this.root.querySelector('d-hover-box')
     window.customElements.whenDefined('d-hover-box').then(() => {
-      this.hoverBox.listen(this);
-    });
+      this.hoverBox.listen(this)
+    })
     // create numeric ID
-    Footnote.currentFootnoteId += 1;
-    const IdString = Footnote.currentFootnoteId.toString();
-    this.root.host.id = 'd-footnote-' + IdString;
+    Footnote.currentFootnoteId += 1
+    const IdString = Footnote.currentFootnoteId.toString()
+    this.root.host.id = 'd-footnote-' + IdString
 
     // set up hidden hover box
-    const id = 'dt-fn-hover-box-' + IdString;
+    const id = 'dt-fn-hover-box-' + IdString
     this.hoverBox.id = id
 
     // set up visible footnote marker
-    const span = this.root.querySelector('#fn-');
-    span.setAttribute('id', 'fn-' + IdString);
-    span.setAttribute('data-hover-ref', id);
-    span.textContent = IdString;
+    const span = this.root.querySelector('#fn-')
+    span.setAttribute('id', 'fn-' + IdString)
+    span.setAttribute('data-hover-ref', id)
+    span.textContent = IdString
   }
-
 }
 
-Footnote.currentFootnoteId = 0;
+Footnote.currentFootnoteId = 0

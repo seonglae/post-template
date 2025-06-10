@@ -19,60 +19,64 @@ export function _moveLegacyAffiliationFormatIntoArray(frontMatter) {
   for (let author of frontMatter.authors) {
     const hasOldStyle = Boolean(author.affiliation)
     const hasNewStyle = Boolean(author.affiliations)
-    if (!hasOldStyle) continue;
+    if (!hasOldStyle) continue
     if (hasNewStyle) {
-      console.warn(`Author ${author.author} has both old-style ("affiliation" & "affiliationURL") and new style ("affiliations") affiliation information!`)
+      console.warn(
+        `Author ${author.author} has both old-style ("affiliation" & "affiliationURL") and new style ("affiliations") affiliation information!`,
+      )
     } else {
       let newAffiliation = {
-        "name": author.affiliation
+        name: author.affiliation,
       }
-      if (author.affiliationURL) newAffiliation.url = author.affiliationURL;
-      author.affiliations = [newAffiliation];
+      if (author.affiliationURL) newAffiliation.url = author.affiliationURL
+      author.affiliations = [newAffiliation]
     }
   }
   return frontMatter
 }
 
 export function parseFrontmatter(element) {
-  const scriptTag = element.firstElementChild;
+  const scriptTag = element.firstElementChild
   if (scriptTag) {
-    const type = scriptTag.getAttribute('type');
+    const type = scriptTag.getAttribute('type')
     if (type.split('/')[1] == 'json') {
-      const content = scriptTag.textContent;
-      const parsed = JSON.parse(content);
-      return _moveLegacyAffiliationFormatIntoArray(parsed);
+      const content = scriptTag.textContent
+      const parsed = JSON.parse(content)
+      return _moveLegacyAffiliationFormatIntoArray(parsed)
     } else {
-      console.error('Distill only supports JSON frontmatter tags anymore; no more YAML.');
+      console.error('Distill only supports JSON frontmatter tags anymore; no more YAML.')
     }
   } else {
-    console.error('You added a frontmatter tag but did not provide a script tag with front matter data in it. Please take a look at our templates.');
+    console.error(
+      'You added a frontmatter tag but did not provide a script tag with front matter data in it. Please take a look at our templates.',
+    )
   }
-  return {};
+  return {}
 }
 
 export class FrontMatter extends HTMLElement {
-
-  static get is() { return 'd-front-matter'; }
+  static get is() {
+    return 'd-front-matter'
+  }
 
   constructor() {
-    super();
+    super()
 
-    const options = {childList: true, characterData: true, subtree: true};
-    const observer = new MutationObserver( (entries) => {
+    const options = { childList: true, characterData: true, subtree: true }
+    const observer = new MutationObserver(entries => {
       for (const entry of entries) {
         if (entry.target.nodeName === 'SCRIPT' || entry.type === 'characterData') {
-          const data = parseFrontmatter(this);
-          this.notify(data);
+          const data = parseFrontmatter(this)
+          this.notify(data)
         }
       }
-    });
-    observer.observe(this, options);
+    })
+    observer.observe(this, options)
   }
 
   notify(data) {
-    const options = { detail: data, bubbles: true };
-    const event = new CustomEvent('onFrontMatterChanged', options);
-    document.dispatchEvent(event);
+    const options = { detail: data, bubbles: true }
+    const event = new CustomEvent('onFrontMatterChanged', options)
+    document.dispatchEvent(event)
   }
-
 }

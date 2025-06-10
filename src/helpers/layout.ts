@@ -29,19 +29,19 @@ export function body(selector) {
   return `${selector} {
       grid-column: left / text;
     }
-  `;
+  `
 }
 
 export function page(selector) {
   return `${selector} {
       grid-column: left / page;
     }
-  `;
+  `
 }
 
 export function screen(selector) {
   return `${selector} {
     grid-column: start / end;
   }
-  `;
+  `
 }

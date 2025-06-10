@@ -1,4 +1,4 @@
-import logo from '../assets/distill-logo.svg?raw';
+import logo from '../assets/distill-logo.svg?raw'
 
 export const footerTemplate = `
 <style>
@@ -71,4 +71,4 @@ export const footerTemplate = `
 
 </div>
 
-`;
+`

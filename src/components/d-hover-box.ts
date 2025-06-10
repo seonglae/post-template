@@ -12,9 +12,11 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-import { Template } from '../mixins/template';
+import { Template } from '../mixins/template'
 
-const T = Template('d-hover-box', `
+const T = Template(
+  'd-hover-box',
+  `
 <style>
 
 :host {
@@ -57,97 +59,106 @@ const T = Template('d-hover-box', `
     <slot></slot>
   </div>
 </div>
-`);
+`,
+)
 
 export class HoverBox extends T(HTMLElement) {
-
   constructor() {
-    super();
+    super()
   }
 
-  connectedCallback() {
-
-  }
+  connectedCallback() {}
 
   listen(element) {
     // console.log(element)
-    this.bindDivEvents(this);
-    this.bindTriggerEvents(element);
+    this.bindDivEvents(this)
+    this.bindTriggerEvents(element)
     // this.style.display = "block";
   }
 
   bindDivEvents(element) {
     // For mice, same behavior as hovering on links
     element.addEventListener('mouseover', () => {
-      if (!this.visible) this.showAtNode(element);
-      this.stopTimeout();
-    });
+      if (!this.visible) this.showAtNode(element)
+      this.stopTimeout()
+    })
     element.addEventListener('mouseout', () => {
-      this.extendTimeout(500);
-    });
+      this.extendTimeout(500)
+    })
     // Don't trigger body touchstart event when touching within box
-    element.addEventListener('touchstart', (event) => {
-      event.stopPropagation();
-    }, {passive: true});
+    element.addEventListener(
+      'touchstart',
+      event => {
+        event.stopPropagation()
+      },
+      { passive: true },
+    )
     // Close box when touching outside box
-    document.body.addEventListener('touchstart', () => {
-      this.hide();
-    }, {passive: true});
+    document.body.addEventListener(
+      'touchstart',
+      () => {
+        this.hide()
+      },
+      { passive: true },
+    )
   }
 
   bindTriggerEvents(node) {
     node.addEventListener('mouseover', () => {
       if (!this.visible) {
-        this.showAtNode(node);
+        this.showAtNode(node)
       }
-      this.stopTimeout();
-    });
+      this.stopTimeout()
+    })
 
     node.addEventListener('mouseout', () => {
-      this.extendTimeout(300);
-    });
+      this.extendTimeout(300)
+    })
 
-    node.addEventListener('touchstart', (event) => {
-      if (this.visible) {
-        this.hide();
-      } else {
-        this.showAtNode(node);
-      }
-      // Don't trigger body touchstart event when touching link
-      event.stopPropagation();
-    }, {passive: true});
+    node.addEventListener(
+      'touchstart',
+      event => {
+        if (this.visible) {
+          this.hide()
+        } else {
+          this.showAtNode(node)
+        }
+        // Don't trigger body touchstart event when touching link
+        event.stopPropagation()
+      },
+      { passive: true },
+    )
   }
 
   show(position) {
-    this.visible = true;
-    this.style.display = 'block';
+    this.visible = true
+    this.style.display = 'block'
     // 10px extra offset from element
-    this.style.top = Math.round(position[1] + 10) + 'px';
+    this.style.top = Math.round(position[1] + 10) + 'px'
   }
 
   showAtNode(node) {
     // https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/offsetTop
-    const bbox = node.getBoundingClientRect();
-    this.show([node.offsetLeft + bbox.width, node.offsetTop + bbox.height]);
+    const bbox = node.getBoundingClientRect()
+    this.show([node.offsetLeft + bbox.width, node.offsetTop + bbox.height])
   }
 
   hide() {
-    this.visible = false;
-    this.style.display = 'none';
-    this.stopTimeout();
+    this.visible = false
+    this.style.display = 'none'
+    this.stopTimeout()
   }
 
   stopTimeout() {
     if (this.timeout) {
-      clearTimeout(this.timeout);
+      clearTimeout(this.timeout)
     }
   }
 
   extendTimeout(time) {
-    this.stopTimeout();
+    this.stopTimeout()
     this.timeout = setTimeout(() => {
-      this.hide();
-    }, time);
+      this.hide()
+    }, time)
   }
-
 }

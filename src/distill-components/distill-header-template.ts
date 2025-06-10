@@ -1,4 +1,4 @@
-import logo from '../assets/distill-logo.svg?raw';
+import logo from '../assets/distill-logo.svg?raw'
 
 export const headerTemplate = `
 <style>
@@ -76,4 +76,4 @@ distill-header .nav a {
     <a href="/journal/">Submit</a>
   </nav>
 </div>
-`;
+`

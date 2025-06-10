@@ -15,59 +15,58 @@
 /*global ShadyCSS*/
 
 export const Template = (name, templateString, useShadow = true) => {
-
-  return (superclass) => {
-
-    const template = document.createElement('template');
-    template.innerHTML = templateString;
+  return superclass => {
+    const template = document.createElement('template')
+    template.innerHTML = templateString
 
     if (useShadow && 'ShadyCSS' in window) {
-      ShadyCSS.prepareTemplate(template, name);
+      ShadyCSS.prepareTemplate(template, name)
     }
 
     return class extends superclass {
-
-      static get is() { return name; }
+      static get is() {
+        return name
+      }
 
       constructor() {
-        super();
+        super()
 
-        this.clone = document.importNode(template.content, true);
+        this.clone = document.importNode(template.content, true)
         if (useShadow) {
-          this.attachShadow({mode: 'open'});
-          this.shadowRoot.appendChild(this.clone);
+          this.attachShadow({ mode: 'open' })
+          this.shadowRoot.appendChild(this.clone)
         }
       }
 
       connectedCallback() {
         if (this.hasAttribute('distill-prerendered')) {
-          return;
+          return
         }
         if (useShadow) {
           if ('ShadyCSS' in window) {
-            ShadyCSS.styleElement(this);
+            ShadyCSS.styleElement(this)
           }
         } else {
-          this.insertBefore(this.clone, this.firstChild);
+          this.insertBefore(this.clone, this.firstChild)
         }
       }
 
       get root() {
         if (useShadow) {
-          return this.shadowRoot;
+          return this.shadowRoot
         } else {
-          return this;
+          return this
         }
       }
 
       /* TODO: Are we using these? Should we even? */
       $(query) {
-        return this.root.querySelector(query);
+        return this.root.querySelector(query)
       }
 
       $$(query) {
-        return this.root.querySelectorAll(query);
+        return this.root.querySelectorAll(query)
       }
-    };
-  };
-};
+    }
+  }
+}

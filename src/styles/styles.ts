@@ -12,28 +12,26 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-import base from './styles-base.css?raw';
-import layout from './styles-layout.css?raw';
-import print from './styles-print.css?raw';
-import byline from './d-byline.css?raw';
-import article from './d-article.css?raw';
-import title from './d-title.css?raw';
-import math from './d-math.css?raw';
+import base from './styles-base.css?raw'
+import layout from './styles-layout.css?raw'
+import print from './styles-print.css?raw'
+import byline from './d-byline.css?raw'
+import article from './d-article.css?raw'
+import title from './d-title.css?raw'
+import math from './d-math.css?raw'
 
-export const styles = base + layout + title + byline + article + math + print;
+export const styles = base + layout + title + byline + article + math + print
 
 export function makeStyleTag(dom) {
-
-  const styleTagId = 'distill-prerendered-styles';
-  const prerenderedTag = dom.getElementById(styleTagId);
+  const styleTagId = 'distill-prerendered-styles'
+  const prerenderedTag = dom.getElementById(styleTagId)
   if (!prerenderedTag) {
-    const styleTag = dom.createElement('style');
-    styleTag.id = styleTagId;
-    styleTag.type = 'text/css';
-    const cssTextTag = dom.createTextNode(styles);
-    styleTag.appendChild(cssTextTag);
-    const firstScriptTag = dom.head.querySelector('script');
-    dom.head.insertBefore(styleTag, firstScriptTag);
+    const styleTag = dom.createElement('style')
+    styleTag.id = styleTagId
+    styleTag.type = 'text/css'
+    const cssTextTag = dom.createTextNode(styles)
+    styleTag.appendChild(cssTextTag)
+    const firstScriptTag = dom.head.querySelector('script')
+    dom.head.insertBefore(styleTag, firstScriptTag)
   }
-
 }

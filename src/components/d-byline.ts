@@ -20,41 +20,61 @@ export function bylineTemplate(frontMatter) {
     <div class="authors-affiliations grid">
       <h3>Authors</h3>
       <h3>Affiliations</h3>
-      ${frontMatter.authors.map(author => `
+      ${frontMatter.authors
+        .map(
+          author => `
         <p class="author">
-          ${author.personalURL ? `
-            <a class="name" href="${author.personalURL}">${author.name}</a>` : `
-            <span class="name">${author.name}</span>`}
+          ${
+            author.personalURL
+              ? `
+            <a class="name" href="${author.personalURL}">${author.name}</a>`
+              : `
+            <span class="name">${author.name}</span>`
+          }
         </p>
         <p class="affiliation">
-        ${author.affiliations.map(affiliation =>
-          affiliation.url ? `<a class="affiliation" href="${affiliation.url}">${affiliation.name}</a>` : `<span class="affiliation">${affiliation.name}</span>`
-        ).join(', ')}
+        ${author.affiliations
+          .map(affiliation =>
+            affiliation.url
+              ? `<a class="affiliation" href="${affiliation.url}">${affiliation.name}</a>`
+              : `<span class="affiliation">${affiliation.name}</span>`,
+          )
+          .join(', ')}
         </p>
-      `).join('')}
+      `,
+        )
+        .join('')}
     </div>
     <div>
       <h3>Published</h3>
-      ${frontMatter.publishedDate ? `
-        <p>${frontMatter.publishedMonth} ${frontMatter.publishedDay}, ${frontMatter.publishedYear}</p> ` : `
-        <p><em>Not published yet.</em></p>`}
+      ${
+        frontMatter.publishedDate
+          ? `
+        <p>${frontMatter.publishedMonth} ${frontMatter.publishedDay}, ${frontMatter.publishedYear}</p> `
+          : `
+        <p><em>Not published yet.</em></p>`
+      }
     </div>
     <div>
       <h3>DOI</h3>
-      ${frontMatter.doi ? `
-        <p><a href="https://doi.org/${frontMatter.doi}">${frontMatter.doi}</a></p>` : `
-        <p><em>No DOI yet.</em></p>`}
+      ${
+        frontMatter.doi
+          ? `
+        <p><a href="https://doi.org/${frontMatter.doi}">${frontMatter.doi}</a></p>`
+          : `
+        <p><em>No DOI yet.</em></p>`
+      }
     </div>
   </div>
-`;
+`
 }
 
 export class Byline extends HTMLElement {
-
-  static get is() { return 'd-byline'; }
-
-  set frontMatter(frontMatter) {
-    this.innerHTML = bylineTemplate(frontMatter);
+  static get is() {
+    return 'd-byline'
   }
 
+  set frontMatter(frontMatter) {
+    this.innerHTML = bylineTemplate(frontMatter)
+  }
 }
