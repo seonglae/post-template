@@ -2,14 +2,14 @@
   "name": "distill-template",
   "version": "2.8.0",
   "description": "Template for creating Distill articles.",
-  "main": "dist/template.v2.js",
+  "main": "public/template.v2.js",
   "bin": {
     "distill-render": "./bin/render.ts"
   },
-  "author": "Shan Carter",
-  "homepage": "https://github.com/distillpub/distill-template#readme",
+  "author": "Seonglae Cho",
+  "homepage": "https://github.com/seonglae/post-template#readme",
   "bugs": {
-    "url": "https://github.com/distillpub/distill-template/issues"
+    "url": "https://github.com/seonglae/post-template/issues"
   },
   "scripts": {
     "dev": "vite",
@@ -21,11 +21,13 @@
     "format": "prettier --cache \"**/*.{js,json,md,css,js,ts,tsx}\" --write --ignore-path .gitignore"
   },
   "repository": {
-    "url": "git+https://github.com/distillpub/distill-template.git",
+    "url": "git+https://github.com/seonglae/post-template.git",
     "type": "git"
   },
   "devDependencies": {
     "@babel/core": "^7.9.0",
+    "@types/chai": "^5.2.2",
+    "@types/jsdom": "^21.1.7",
     "bibtex-parse-js": "^0.0.23",
     "chai": "^3.5.0",
     "eslint": "^4.19.1",
