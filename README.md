@@ -1,6 +1,6 @@
 # Distill Template
 
-This is the repository for the Distill web framework.
+Run `npm install` first. Then start the dev server with `npm run dev`, build once with `npm run build`, and view pages with `npm run serve`.
 
 ## Contributing
 
