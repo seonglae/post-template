@@ -1,23 +1,27 @@
-# Distill Template
+# Distill Template (Vite + TypeScript)
 
-This is the repository for the Distill web framework.
+A modern rewrite of the original [Distill pub](https://distill.pub) template using a modern stack.  The code base has been updated to use **TypeScript** and **Vite** for fast development and modern tooling.
 
-## Contributing
+## Overview
 
-To give feedback, report a bug, or request a feature, please open an issue.
+The project bundles Distill components, transforms, and helpers written in TypeScript.  Vite handles building to the `public` directory and Vitest runs the tests.  A command line tool (`distill-render`) is provided to render articles statically using JSDOM.
 
-To contribute a change, [check out the contributing guide](CONTRIBUTING.md).
+### Repository Structure
 
-### Local Development
+- **src/** – TypeScript source for components, transforms and utilities
+- **public/** – output HTML and assets
+- **bin/** – the `distill-render` CLI for transforming HTML
+- **test/** – unit tests executed by Vitest
+- **vite.config.ts** – build configuration targeting ES2020 modules
 
-First, run `npm install` to install all node modules required. Then, run `npm run dev` to start a watching build rollup server. To view the sample pages in the repo, you can run `npm run serve` as a separate process which starts a static server. `npm run build` will run a one-time build.
+## Development
 
-## Disclaimer & License
+1. Install dependencies with `npm install`.
+2. Run `npm run dev` for a watch build.
+3. Execute `npm run serve` to preview the `public` directory.
+4. Use `npm run build` for a production build.
+5. Run `npm test` to execute the Vitest suite.
 
-_This project is research code. It is not an official product of Google or any other institution supporting Distill._
+## License
 
-Copyright 2018, The Distill Template Authors.
-
-Licensed under the Apache License, Version 2.0
-
-See the [full license](LICENSE).
+This project is research code and not an official Google product.  It is licensed under the [Apache 2.0 License](LICENSE).
