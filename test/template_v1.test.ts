@@ -15,15 +15,7 @@
 import { describe, it, expect } from 'vitest'
 import { JSDOM } from 'jsdom'
 
-// TODO: Update import path when TypeScript version is available
-// import * as distill from '../dist/template.v1'
-
-// Temporary mock until we have the actual implementation
-const distill = {
-  render: () => {},
-  html: (doc: Document, options: any) => {},
-  styles: () => {},
-}
+import * as distill from '../src/template_v1'
 
 interface Distill {
   render: Function
