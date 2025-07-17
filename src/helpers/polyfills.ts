@@ -41,14 +41,14 @@ export const polyfills = [
         'from' in Array
       )
     },
-    url: 'https://distill.pub/third-party/polyfills/webcomponents-lite.js',
+    url: '/third-party/polyfills/webcomponents-lite.js',
   },
   {
     name: 'IntersectionObserver',
     support: function () {
       return 'IntersectionObserver' in window && 'IntersectionObserverEntry' in window
     },
-    url: 'https://distill.pub/third-party/polyfills/intersection-observer.js',
+    url: '/third-party/polyfills/intersection-observer.js',
   },
 ]
 

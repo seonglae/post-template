@@ -21,9 +21,9 @@ import style from '../styles/d-math.css?raw'
 // attaches renderMathInElement to window
 import { renderMathInElement } from '../helpers/katex-auto-render'
 
-export const katexJSURL = 'https://distill.pub/third-party/katex/katex.min.js'
+export const katexJSURL = '/third-party/katex/katex.min.js'
 export const katexCSSTag =
-  '<link rel="stylesheet" href="https://distill.pub/third-party/katex/katex.min.css" crossorigin="anonymous">'
+  '<link rel="stylesheet" href="/third-party/katex/katex.min.css" crossorigin="anonymous">'
 
 const T = Template(
   'd-math',
