@@ -55,7 +55,7 @@ export const footerTemplate = `
 
   <a href="/" class="logo">
     ${logo}
-    Distill
+    Distill + Vite
   </a> is dedicated to clear explanations of machine learning
 
   <div class="nav">
@@ -66,7 +66,7 @@ export const footerTemplate = `
     <a href="https://distill.pub/rss.xml">RSS</a>
     <a href="https://github.com/distillpub">GitHub</a>
     <a href="https://twitter.com/distillpub">Twitter</a>
-    &nbsp;&nbsp;&nbsp;&nbsp; ISSN 2476-0757
+    &nbsp;&nbsp;&nbsp;&nbsp; ISSN xxxx-xxxx
   </div>
 
 </div>
