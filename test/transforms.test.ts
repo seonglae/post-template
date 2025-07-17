@@ -15,30 +15,7 @@
 import { describe, it, expect } from 'vitest'
 import { JSDOM, VirtualConsole } from 'jsdom'
 
-// TODO: Update import path when TypeScript version is available
-// import * as distill from '../dist/transforms.v2'
-
-// Temporary mock until we have the actual implementation
-const distill = {
-  testing: {
-    extractors: new Map<string, (doc: Document, data: TestData) => void>([
-      ['ExtractCitations', (doc: Document, data: TestData) => {}],
-      ['ExtractBibliography', (doc: Document, data: TestData) => {}],
-    ]),
-    transforms: new Map<string, (doc: Document, data: TestData) => void>([
-      ['Meta', (doc: Document, data: TestData) => {}],
-    ]),
-  },
-  usesTemplateV2: (frag: DocumentFragment) => {
-    if (frag.querySelector('script[src*="template.v1.js"]')) return false
-    if (frag.querySelector('script[src*="template.v2.js"]')) return true
-    if (frag.querySelector('script[src="/template.v2.js"]')) return true
-    if (frag.querySelector('script[src*="template.v42.js"]')) throw new Error('unknown')
-    throw new Error('at all')
-  },
-  render: () => {},
-  distillify: () => {},
-}
+import * as distill from '../src/transforms'
 
 interface Bibliography {
   [key: string]: {
