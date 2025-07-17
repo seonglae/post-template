@@ -12,8 +12,8 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-const webcomponentPath = 'https://distill.pub/third-party/polyfills/webcomponents-lite.js'
-const intersectionObserverPath = 'https://distill.pub/third-party/polyfills/intersection-observer.js'
+const webcomponentPath = '/third-party/polyfills/webcomponents-lite.js'
+const intersectionObserverPath = '/third-party/polyfills/intersection-observer.js'
 
 // const template = `
 // if ('IntersectionObserver' in window &&
@@ -55,7 +55,7 @@ const addBackIn = `
 window.addEventListener('WebComponentsReady', function() {
   console.warn('WebComponentsReady');
   const loaderTag = document.createElement('script');
-  loaderTag.src = 'https://distill.pub/template.v2.js';
+  loaderTag.src = '/template.v2.js';
   document.head.insertBefore(loaderTag, document.head.firstChild);
 });
 `

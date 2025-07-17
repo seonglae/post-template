@@ -72,8 +72,6 @@ distill-header .nav a {
   </a>
   <nav class="nav">
     <a href="/about/">About</a>
-    <a href="/prize/">Prize</a>
-    <a href="/journal/">Submit</a>
   </nav>
 </div>
 `
