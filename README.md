@@ -2,6 +2,9 @@
 
 A modern rewrite of the original [Distill pub](https://distill.pub) template using a modern stack.  The code base has been updated to use **TypeScript** and **Vite** for fast development and modern tooling.
 
+<img width="1443" height="1001" alt="image" src="https://github.com/user-attachments/assets/fcfc026b-22a4-4996-be60-20c7a1d89690" />
+
+
 ## Overview
 
 The project bundles Distill components, transforms, and helpers written in TypeScript.  Vite handles building to the `public` directory and Vitest runs the tests.  A command line tool (`distill-render`) is provided to render articles statically using JSDOM.
