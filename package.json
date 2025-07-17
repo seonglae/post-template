@@ -4,7 +4,8 @@
   "description": "Template for creating Distill articles.",
   "main": "public/template.v2.js",
   "bin": {
-    "distill-render": "./bin/render.ts"
+    "distill-render": "./bin/render.ts",
+    "distill-archive": "./bin/archive.ts"
   },
   "author": "Seonglae Cho",
   "homepage": "https://github.com/seonglae/post-template#readme",
