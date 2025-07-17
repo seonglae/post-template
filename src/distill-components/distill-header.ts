@@ -18,4 +18,30 @@ import { headerTemplate } from './distill-header-template'
 
 const T = Template('distill-header', headerTemplate, false)
 
-export class DistillHeader extends T(HTMLElement) {}
+export class DistillHeader extends T(HTMLElement) {
+  connectedCallback() {
+    if (super.connectedCallback) {
+      super.connectedCallback();
+    }
+
+    const submit = this.root.querySelector('#submit-link');
+    if (submit) {
+      submit.addEventListener('click', async (e: Event) => {
+        e.preventDefault();
+        try {
+          const resp = await fetch('/package.json');
+          const pkg = await resp.json();
+          let repo: string = pkg.repository?.url || '';
+          repo = repo.replace(/^git\+/, '').replace(/\.git$/, '');
+          const match = repo.match(/github\.com[:\/](.+)/);
+          if (match) {
+            const base = 'https://github.com/' + match[1];
+            window.open(base.replace(/\.git$/, '') + '/compare', '_blank');
+          }
+        } catch (err) {
+          console.error('Unable to open PR page', err);
+        }
+      });
+    }
+  }
+}
