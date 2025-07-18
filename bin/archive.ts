@@ -43,24 +43,34 @@ function parseMeta(file: string): ArticleMeta | null {
 }
 
 function generateHTML(articles: ArticleMeta[]): string {
+  const items = articles
+    .map(a => {
+      const date = a.published ? `<div>${a.published}</div>` : ''
+      const authors = a.authors ? `<div>${a.authors.map(p => p.author).join(', ')}</div>` : ''
+      return `<li><a href="/${a.url}">${a.title}</a>${date}${authors}</li>`
+    })
+    .join('\n          ')
+
   return `<!doctype html>
 <html>
-<head>
-  <meta charset="utf-8">
-  <title>Archive</title>
-</head>
-<body>
-  <h1>Archive</h1>
-  <ul>
-    ${articles
-      .map(a => {
-        const date = a.published ? ` - ${a.published}` : ''
-        const authors = a.authors ? ' - ' + a.authors.map(p => p.author).join(', ') : ''
-        return `<li><a href="/${a.url}">${a.title}</a>${date}${authors}</li>`
-      })
-      .join('\n    ')}
-  </ul>
-</body>
+  <head>
+    <script src="/template.v2.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta charset="utf-8" />
+    <title>Archive</title>
+  </head>
+  <body>
+    <distill-header></distill-header>
+    <d-title><h1>Archive</h1></d-title>
+    <d-article>
+      <div class="issues">
+        <ul>
+          ${items}
+        </ul>
+      </div>
+    </d-article>
+    <distill-footer></distill-footer>
+  </body>
 </html>`
 }
 
