@@ -19,7 +19,9 @@ function getAllHtmlFiles(dir: string): string[] {
 
 interface ArticleMeta {
   title: string
+  description?: string
   published?: string
+  doi?: string
   authors?: { author: string }[]
   url: string
 }
@@ -33,7 +35,9 @@ function parseMeta(file: string): ArticleMeta | null {
     const data = JSON.parse(script.textContent)
     return {
       title: data.title,
+      description: data.description,
       published: data.published || data.publishedDate,
+      doi: data.doi,
       authors: data.authors,
       url: path.relative('public', file).replace(/\\/g, '/'),
     }
@@ -45,9 +49,12 @@ function parseMeta(file: string): ArticleMeta | null {
 function generateHTML(articles: ArticleMeta[]): string {
   const items = articles
     .map(a => {
-      const date = a.published ? `<div>${a.published}</div>` : ''
-      const authors = a.authors ? `<div>${a.authors.map(p => p.author).join(', ')}</div>` : ''
-      return `<li><a href="/${a.url}">${a.title}</a>${date}${authors}</li>`
+      const parts = [`<a href="/${a.url}">${a.title}</a>`]
+      if (a.doi) parts.push(`<div><a class="doi" href="${a.doi}">${a.doi}</a></div>`)
+      if (a.description) parts.push(`<div>${a.description}</div>`)
+      if (a.published) parts.push(`<div>${a.published}</div>`)
+      if (a.authors) parts.push(`<div>${a.authors.map(p => p.author).join(', ')}</div>`)
+      return `<li>${parts.join('')}</li>`
     })
     .join('\n          ')
 
