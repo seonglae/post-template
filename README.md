@@ -2,6 +2,10 @@
 
 A modern rewrite of the original [Distill pub](/) template using a modern stack.  The code base has been updated to use **TypeScript** and **Vite** for fast development and modern tooling.
 
+This project continues the spirit of Distill as a modern publishing platform built with Vite. It is currently in alpha development. The above image is purely for style.
+
+The aim of this template is to eventually become a lightweight CMS for academic writing. It embraces Distill's focus on clarity and interactive articles while relying on modern tooling for easier maintenance. Expect rapid changes while things are refined.
+
 <img width="1443" height="1001" alt="image" src="https://github.com/user-attachments/assets/fcfc026b-22a4-4996-be60-20c7a1d89690" />
 
 
