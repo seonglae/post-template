@@ -7,7 +7,7 @@ A modern rewrite of the original [Distill pub](/) template using a modern stack.
 
 ## Overview
 
-The project bundles Distill components, transforms, and helpers written in TypeScript. Vite handles building to the `public` directory and Vitest runs the tests. A command line tool (`distill-render`) is provided to render articles statically using JSDOM. Another utility (`distill-archive`) reads the front matter of existing HTML articles and generates a styled archive page.
+The project bundles Distill components, transforms, and helpers written in TypeScript. Vite handles building to the `public` directory and Vitest runs the tests. A command line tool (`distill-render`) is provided to render articles statically using JSDOM. Another utility (`distill-archive`) reads the front matter of existing HTML articles and generates a styled archive page. The archive is also created automatically during the build process.
 
 ### Repository Structure
 
@@ -22,9 +22,9 @@ The project bundles Distill components, transforms, and helpers written in TypeS
 1. Install dependencies with `npm install`.
 2. Run `npm run dev` for a watch build.
 3. Execute `npm run serve` to preview the `public` directory.
-4. Use `npm run build` for a production build.
+4. Use `npm run build` for a production build and to generate the archive page.
 5. Run `npm test` to execute the Vitest suite.
-6. Generate an archive page from existing articles with `npx distill-archive`.
+6. Generate an archive page manually with `npx distill-archive` if needed.
 
 ## License
 
