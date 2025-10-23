@@ -9,6 +9,7 @@ function getAllHtmlFiles(dir: string): string[] {
     const full = path.join(dir, name)
     const stat = fs.statSync(full)
     if (stat.isDirectory()) {
+      if (name === 'archive') continue
       files.push(...getAllHtmlFiles(full))
     } else if (name.endsWith('.html')) {
       files.push(full)
