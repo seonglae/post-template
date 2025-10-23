@@ -17,7 +17,7 @@
     "serve": "serve public",
     "test": "vitest run",
     "lint": "eslint",
-    "build": "vite build && distill-archive",
+    "build": "vite build && npx tsx ./bin/archive.ts",
     "prepare": "npm run build",
     "format": "prettier --cache \"**/*.{js,json,md,css,js,ts,tsx}\" --write --ignore-path .gitignore"
   },
