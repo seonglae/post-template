@@ -7,20 +7,16 @@
 <body>
   <distill-header></distill-header>
   <main style="margin: 20px; font-family: sans-serif; text-align: center;">
-    <p>Contribute to this project by submitting a pull request.</p>
-    <button id="submit-btn" style="padding: 0.5rem 1rem;">Submit PR</button>
+    <p>Redirecting to Pull Requests…</p>
   </main>
   <distill-footer></distill-footer>
   <script type="module">
-    const btn = document.getElementById('submit-btn');
     fetch('../package.json')
       .then(r => r.json())
       .then(pkg => {
         const repoUrl = (pkg.repository && pkg.repository.url) || pkg.homepage || '';
         const repo = repoUrl.replace(/^git\+/, '').replace(/\.git$/, '');
-        btn.addEventListener('click', () => {
-          window.location.href = repo + '/pull/new';
-        });
+        window.location.href = repo + '/pull/new';
       });
   </script>
 </body>
