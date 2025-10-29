@@ -7,9 +7,9 @@
     "distill-render": "./bin/render.ts"
   },
   "author": "Seonglae Cho",
-  "homepage": "https://github.com/seonglae/post-template#readme",
+  "homepage": "https://github.com/texonom/template#readme",
   "bugs": {
-    "url": "https://github.com/seonglae/post-template/issues"
+    "url": "https://github.com/texonom/template/issues"
   },
   "scripts": {
     "dev": "vite build --watch",
@@ -21,7 +21,7 @@
     "format": "prettier --cache \"**/*.{js,json,md,css,js,ts,tsx}\" --write --ignore-path .gitignore"
   },
   "repository": {
-    "url": "git+https://github.com/seonglae/post-template.git",
+    "url": "git+https://github.com/texonom/template.git",
     "type": "git"
   },
   "devDependencies": {
