@@ -1,11 +1,12 @@
 import logo from '../assets/distill-logo.svg?raw'
+import { THEME } from './config'
 
 export const headerTemplate = `
 <style>
 distill-header {
   position: relative;
   height: 60px;
-  background-color: hsl(200, 60%, 15%);
+  background-color: ${THEME.primaryColor};
   width: 100%;
   box-sizing: border-box;
   z-index: 2;
@@ -71,7 +72,7 @@ distill-header .nav a {
     Distill
   </a>
   <nav class="nav">
-    <a href="/about/">About</a>
+    <a href="https://github.com/seonglae/post-template/pull/new/master">Submit</a>
   </nav>
 </div>
 `
