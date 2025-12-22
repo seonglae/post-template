@@ -71,7 +71,7 @@ distill-header .nav a {
     Distill
   </a>
   <nav class="nav">
-    <a href="/about/">About</a>
+    <a href="https://github.com/seonglae/post-template/pull/new/master">Submit</a>
   </nav>
 </div>
 `
