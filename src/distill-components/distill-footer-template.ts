@@ -8,7 +8,7 @@ export const footerTemplate = `
   font-weight: 300;
   padding: 2rem 0;
   border-top: 1px solid rgba(0, 0, 0, 0.1);
-  background-color: hsl(180, 5%, 15%); /*hsl(200, 60%, 15%);*/
+  background-color: hsl(200, 60%, 15%);
   text-align: left;
   contain: content;
 }
@@ -59,12 +59,9 @@ export const footerTemplate = `
   </a> is a modern publishing platform built with Vite
 
   <div class="nav">
-    <a href="/about/">About</a>
-    <a href="/archive/">Archive</a>
-    <a href="/rss">RSS</a>
+    <a href="https://github.com/seonglae/post-template/pull/new/master">Submit</a>
     <a href="https://github.com/seonglae/post-template">GitHub</a>
     <a href="https://twitter.com/SeonglaeC">Twitter</a>
-    &nbsp;&nbsp;&nbsp;&nbsp; ISSN xxxxx-xxxx
   </div>
 
 </div>
