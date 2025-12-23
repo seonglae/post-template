@@ -74,6 +74,7 @@ distill-header .nav a {
     Distill
   </a>
   <nav class="nav">
+    <a href="/archive/">Archive</a>
     <a href="${repoUrl}/pulls">Submit</a>
   </nav>
 </div>
