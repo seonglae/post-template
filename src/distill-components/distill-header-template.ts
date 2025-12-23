@@ -74,7 +74,7 @@ distill-header .nav a {
     Distill + Vite
   </a>
   <nav class="nav">
-    <a href="${repoUrl}/pull/new/master">Submit</a>
+    <a href="${repoUrl}/pulls">Submit</a>
   </nav>
 </div>
 `

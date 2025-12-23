@@ -62,7 +62,7 @@ export const footerTemplate = `
   </a> is a modern publishing platform built with Vite
 
   <div class="nav">
-    <a href="${repoUrl}/pull/new/master">Submit</a>
+    <a href="${repoUrl}/pulls">Submit</a>
     <a href="${repoUrl}">GitHub</a>
     <a href="https://twitter.com/SeonglaeC">Twitter</a>
   </div>
