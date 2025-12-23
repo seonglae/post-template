@@ -62,6 +62,7 @@ export const footerTemplate = `
   </a> is dedicated to clear explanations of machine learning
 
   <div class="nav">
+    <a href="/archive/">Archive</a>
     <a href="${repoUrl}/pulls">Submit</a>
     <a href="${repoUrl}">GitHub</a>
     <a href="https://twitter.com/SeonglaeC">Twitter</a>
