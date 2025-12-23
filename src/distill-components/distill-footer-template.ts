@@ -1,5 +1,8 @@
 import logo from '../assets/distill-logo.svg?raw'
 
+declare const __REPO_URL__: string
+const repoUrl = typeof __REPO_URL__ !== 'undefined' ? __REPO_URL__ : 'https://github.com/seonglae/post-template'
+
 export const footerTemplate = `
 <style>
 
@@ -8,7 +11,7 @@ export const footerTemplate = `
   font-weight: 300;
   padding: 2rem 0;
   border-top: 1px solid rgba(0, 0, 0, 0.1);
-  background-color: hsl(180, 5%, 15%); /*hsl(200, 60%, 15%);*/
+  background-color: hsl(200, 60%, 15%);
   text-align: left;
   contain: content;
 }
@@ -55,16 +58,13 @@ export const footerTemplate = `
 
   <a href="/" class="logo">
     ${logo}
-    Distill
-  </a> is dedicated to clear explanations of machine learning
+    Distill + Vite
+  </a> is a modern publishing platform built with Vite
 
   <div class="nav">
-    <a href="/about/">About</a>
-    <a href="/archive/">Archive</a>
-    <a href="/rss">RSS</a>
-    <a href="https://github.com/seonglae/post-template">GitHub</a>
+    <a href="${repoUrl}/pulls">Submit</a>
+    <a href="${repoUrl}">GitHub</a>
     <a href="https://twitter.com/SeonglaeC">Twitter</a>
-    &nbsp;&nbsp;&nbsp;&nbsp; ISSN 2476-0757
   </div>
 
 </div>

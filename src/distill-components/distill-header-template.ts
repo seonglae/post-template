@@ -1,5 +1,8 @@
 import logo from '../assets/distill-logo.svg?raw'
 
+declare const __REPO_URL__: string
+const repoUrl = typeof __REPO_URL__ !== 'undefined' ? __REPO_URL__ : 'https://github.com/seonglae/post-template'
+
 export const headerTemplate = `
 <style>
 distill-header {
@@ -68,10 +71,10 @@ distill-header .nav a {
 <div class="content">
   <a href="/" class="logo">
     ${logo}
-    Distill
+    Distill + Vite
   </a>
   <nav class="nav">
-    <a href="/about/">About</a>
+    <a href="${repoUrl}/pulls">Submit</a>
   </nav>
 </div>
 `
