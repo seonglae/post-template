@@ -25,27 +25,14 @@
   <distill-header></distill-header>
   <d-front-matter>
     <script id='distill-front-matter' type="text/json">{
-    "title": "Why Momentum Really Works",
-    "description": "Although \" extremely useful for visualizing high-dimensional data, t-SNE plots can sometimes be mysterious or misleading.",
-    "published": "Jan 10, 2017",
+    "title": "Distill + Vite",
+    "description": "A modern publishing platform continuing Distill's spirit using Vite.",
+    "published": "Jul 18, 2025",
     "authors": [
       {
-        "author":"Chris Olah",
-        "authorURL":"https://colah.github.io/",
-        "affiliations": [{"name": "Google Brain"}]
-      },
-      {
-        "author":"Ludwig Schubert",
-        "authorURL":"https://shancarter.com/",
-        "affiliations": [{"name": "Google Brain", "url": "https://g.co/brain"}]
-      },
-      {
-        "author":"Shan Carter",
-        "authorURL":"https://shancarter.com/",
-        "affiliations": [
-          {"name": "Google Brain", "url": "https://g.co/brain"},
-          {"name": "NYT", "url": "https://nytimes.com"}
-        ]
+        "author":"Seonglae Cho",
+        "authorURL":"https://github.com/seonglae",
+        "affiliations": [{"name": "post-template"}]
       }
     ],
     "katex": {
@@ -58,12 +45,18 @@
   <d-title>
     <figure style="grid-column: page; margin: 1rem 0;"><img src="momentum.png"
         style="width:100%; border: 1px solid rgba(0, 0, 0, 0.2);" /></figure>
-    <p>We often think of Momentum<d-cite key="mercier2011humans"></d-cite> as a means of dampening oscillations and
-      speeding up the iterations, leading to faster convergence. But it has other interesting behavior. It allows a
-      larger range of step-sizes to be used, and creates its own oscillations. What is going on?</p>
+    <p>This project continues the spirit of Distill as a modern publishing platform built with Vite. It is currently in alpha development. The above image is purely for style.</p>
+    <p>The sections below reproduce Distill's <em>Why Momentum Really Works</em> demo article with extra examples.</p>
   </d-title>
   <d-byline></d-byline>
   <d-article>
+    <p>This template retains the interactive style pioneered by Distill while leveraging the fast Vite build pipeline.</p>
+    <p>Components and transforms draw heavily from <a href="https://github.com/distillpub">distillpub</a> examples rewritten in TypeScript.</p>
+    <p>Inline math still works: <d-math>e^{i\pi}+1=0</d-math>.</p>
+    <p>Block equations remain clear:</p>
+    <d-math block>\int_{-\infty}^{\infty} e^{-x^2} dx = \sqrt{\pi}</d-math>
+    <p>Code snippets render as before:</p>
+    <d-code block language="javascript">console.log('hello');</d-code>
     <a class="marker" href="#section-1" id="section-1"><span>1</span></a>
     <h2>A Brief Survey of Techniques</h2>
     <p>Before diving in: if you haven’t encountered t-SNE before, here’s what you need to know about the math behind it.
