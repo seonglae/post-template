@@ -58,8 +58,8 @@ export const footerTemplate = `
 
   <a href="/" class="logo">
     ${logo}
-    Distill
-  </a> is dedicated to clear explanations of machine learning
+    Distill + Vite
+  </a> is a modern publishing platform built with Vite
 
   <div class="nav">
     <a href="/archive/">Archive</a>

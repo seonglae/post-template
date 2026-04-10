@@ -71,7 +71,7 @@ distill-header .nav a {
 <div class="content">
   <a href="/" class="logo">
     ${logo}
-    Distill
+    Distill + Vite
   </a>
   <nav class="nav">
     <a href="/archive/">Archive</a>
